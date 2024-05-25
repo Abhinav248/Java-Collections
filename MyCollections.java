@@ -450,3 +450,250 @@ public class MyCollections {
     }
 
 }
+
+
+/* 
+
+################################################## ALL OUTPUT ##################################################
+
+ArrayList Output:
+
+[Anish, Abhinav, Aayush]
+[Anish, Aayush]
+2
+Anish
+63410480
+false
+true
+[Anish]
+[]
+[Anish, Abhinav, Aayush]
+Anish
+Abhinav
+Aayush
+Anish
+Abhinav
+Aayush
+Aayush
+Abhinav
+Anish
+Anish
+[ANISH, Abhinav, Aayush]
+[Anish, Abhinav, Aayush, 10, 100]
+[1, Abhinav]
+[Abhinav]
+
+##################################################
+
+LinkedList Output:
+
+[1, Abhinav]
+Abhinav
+First
+Abhinav
+[First, Anish, 1, Abhinav, 2, Abhinav]
+[First, Anish, 1, Abhinav, 2, Abhinav]
+[Anish, 1, Abhinav, 2, Abhinav]
+[Anish, 1, 2, Abhinav]
+3
+[1, 2, 4, 3, 5]
+1
+2
+4
+3
+5
+1
+2
+4
+3
+5
+5
+3
+4
+2
+1
+
+##################################################
+
+HashSet Output:
+
+[Anish, 25, Abhinav, 27, Aayush, 30]
+true
+false
+[New, Anish, 25, Abhinav, 27, Aayush, 30]
+New
+Anish
+25
+Abhinav
+27
+Aayush
+30
+[1, 2, 3]
+[1, Abhinav]
+
+##################################################
+
+TreeSet Output:
+
+[25, 27, 30]
+true
+false
+[25, 27, 30, 50]
+25
+27
+30
+50
+[B, C, D, E]
+true
+false
+[A, B, C, D, E]
+A
+B
+C
+D
+E
+[1]
+
+##################################################
+
+HashMap Output:
+
+{key1=1, key2=2, Anish=31, key3=3, Abhinav=28, Aayush=26}
+true
+false
+false
+{key2=2, Anish=31, key3=3, Abhinav=28, Aayush=26}
+2
+1
+111
+null
+{key2=1111, Anish=31, key3=3, Abhinav=28, Aayush=26}
+null
+1111
+false
+true
+{Anish=31, Abhinav=28, Aayush=26}
+false
+3
+true
+true
+31
+true
+[31, 28, 26]
+[Anish, Abhinav, Aayush]
+Anish
+Abhinav
+Aayush
+31
+28
+26
+Anish - 31
+Abhinav - 28
+Aayush - 26
+Unordered HashMap
+B - 66
+3 - 67
+D - 68
+4 - 65
+E - 69
+
+##################################################
+
+TreeMap Output:
+
+Ordered TreeMap
+9 - 67
+B - 66
+E - 69
+Ordered TreeMap
+3 - 67
+4 - 65
+B - 66
+D - 68
+E - 69
+
+##################################################
+
+Stack Output:
+
+My Stack: [0, 1, 2, 3, 4, 5, 6]
+6
+My Stack: [0, 1, 2, 3, 4, 5]
+5
+-1
+true
+false
+false
+6
+0
+3
+5
+My Stack: [0, 1, 2, 3, 4, 5]
+0
+My Stack is: 1 2 3 4 5
+My Stack: [1, 2, 3, 4, 5]
+My Stack: []
+
+##################################################
+
+Queue Output:
+
+true
+true
+true
+1
+1
+Front = 1
+9
+false
+My Queue is: 1 2 3 4 5 6 7 8 9
+MyQueue size = 9
+myQueue: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+true
+
+
+##################################################
+
+ArrayBlockingQueue Output:
+
+true
+true
+true
+1
+1
+Front = 1
+9
+false
+My Queue is: 1 2 3 4 5 6 7 8 9
+MyQueue size = 9
+myQueue: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+true
+
+
+##################################################
+
+Deque Output:
+
+true
+true
+My Deque: [5, 0, 1, 2, 3, 4, 6, 7]
+5
+5
+7
+5
+5
+7
+true
+My Queue is: 5 0 1 2 3 4 6 7
+MyQueue size = 8
+My Deque: [5, 0, 1, 2, 3, 4, 6, 7]
+My Deque: [8, 5, 0, 1, 2, 3, 4, 6, 7]
+My Deque: [5, 0, 1, 2, 3, 4, 6, 7]
+true
+My Deque: [5, 0, 1, 2, 3, 4, 6]
+5
+My Deque: [0, 1, 2, 3, 4, 6]
+
+##################################################
+
+*/
