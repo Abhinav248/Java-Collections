@@ -1,18 +1,10 @@
-====================================================================
-README – Java Collections Demonstration (List, Set, Map, Queue, Stack)
-====================================================================
+Java Collections Framework – Demonstration Project
 
-This project demonstrates the usage, behavior, internal hierarchy,
-and performance characteristics of core Java Collection Framework
-data structures using simple example methods.
+This project demonstrates the usage, hierarchy, and performance characteristics of core Java Collection Framework data structures through simple example methods.
 
-The `main` method acts as a driver that invokes individual methods,
-each showcasing a specific collection type.
+The main method acts as a driver that invokes methods corresponding to different collection categories.
 
---------------------------------------------------------------------
-1. MAIN METHOD OVERVIEW
---------------------------------------------------------------------
-
+1. Main Method Overview
 public static void main(String[] args) {
 
     // List
@@ -43,215 +35,204 @@ public static void main(String[] args) {
 
     // Concurrent Collections
     concurrentCollectionsTutorial();      // Thread-safe collections
-
 }
 
-Each method focuses on:
-- Basic operations (add, remove, search)
-- Ordering and uniqueness
-- Performance characteristics
-- Use cases
 
---------------------------------------------------------------------
-2. JAVA COLLECTION FRAMEWORK – CLASS HIERARCHY (TEXT DIAGRAM)
---------------------------------------------------------------------
+Each method demonstrates:
 
-NOTE:
-- Collection and Map are separate hierarchies.
-- Hashtable is a legacy synchronized Map.
-- TreeMap is Red-Black Tree based.
-- HashMap and Hashtable are hash-based.
+Basic operations (add, remove, search)
 
--------------------------
-COLLECTION HIERARCHY
--------------------------
+Ordering and uniqueness behavior
 
+Internal data structure
+
+Performance trade-offs
+
+2. Java Collection Framework – Class Hierarchy
+2.1 Collection Hierarchy
 java.lang.Iterable
-        |
-        v
+    |
+    v
 java.util.Collection
-        |
-        +---------------------------+
-        |                           |
-     java.util.List             java.util.Set
-        |                           |
-        |                           +----------------------+
-        |                           |                      |
-        |                       HashSet                TreeSet
-        |                           |                      |
-        |                       (uses HashMap)     (uses TreeMap)
-        |
-        +-------------------+
-        |                   |
-    ArrayList           LinkedList
-                            |
-                            v
-                         Deque
-                            |
-                            v
-                        ArrayDeque
+    |
+    +-- java.util.List
+    |       |
+    |       +-- ArrayList
+    |       |
+    |       +-- LinkedList
+    |               |
+    |               +-- Deque
+    |
+    +-- java.util.Set
+            |
+            +-- HashSet
+            |       |
+            |       +-- (internally uses HashMap)
+            |
+            +-- TreeSet
+                    |
+                    +-- (internally uses TreeMap)
 
-
--------------------------
-QUEUE / STACK HIERARCHY
--------------------------
-
+2.2 Queue and Deque Hierarchy
 java.util.Collection
-        |
-        v
+    |
+    v
 java.util.Queue
-        |
-        +--------------------+
-        |                    |
-   PriorityQueue         Deque
-                              |
-                              +----------------+
-                              |                |
-                         ArrayDeque         LinkedList
+    |
+    +-- PriorityQueue
+    |
+    +-- Deque
+            |
+            +-- ArrayDeque
+            |
+            +-- LinkedList
 
-
+2.3 Stack Hierarchy (Legacy)
 java.util.Vector
-        |
-        v
-      Stack   (Legacy, synchronized)
+    |
+    +-- Stack
 
 
--------------------------
-MAP HIERARCHY
--------------------------
+Stack is a legacy, synchronized class.
+Modern Java prefers Deque for stack behavior.
 
+2.4 Map Hierarchy (IMPORTANT)
 java.util.Map
-        |
-        +-------------------------------+
-        |                               |
-     HashMap                         TreeMap
-        |                               |
-        |                        (Red-Black Tree)
-        |
-     Hashtable   (Legacy, synchronized)
+    |
+    +-- HashMap
+    |
+    +-- TreeMap
+    |       |
+    |       +-- (Red-Black Tree based)
+    |
+    +-- Hashtable   (Legacy, synchronized)
 
---------------------------------------------------------------------
-3. INTERNAL WORKING – HIGH LEVEL
---------------------------------------------------------------------
-
+3. Internal Working Summary
 ArrayList
-- Backed by dynamic array
-- Index-based access is fast
-- Costly insert/remove in middle
+
+Backed by a dynamic array
+
+Fast random access
+
+Costly middle insertions/removals
 
 LinkedList
-- Doubly linked list
-- Fast insert/remove
-- Slow random access
+
+Doubly linked list
+
+Fast insert/remove when node is known
+
+Slow random access
 
 HashSet
-- Uses HashMap internally
-- No ordering
-- No duplicates
+
+Internally uses HashMap
+
+No ordering
+
+No duplicates
 
 TreeSet
-- Uses TreeMap internally
-- Sorted order maintained
-- No duplicates
+
+Internally uses TreeMap
+
+Maintains sorted order
+
+No duplicates
 
 HashMap
-- Hash table with buckets
-- Allows one null key
-- Not thread-safe
+
+Hash table with buckets
+
+Allows one null key
+
+Not thread-safe
 
 Hashtable
-- Synchronized HashMap (legacy)
-- No null key/value
-- Slower due to synchronization
+
+Synchronized version of HashMap (legacy)
+
+No null key or value
+
+Slower due to locking
 
 TreeMap
-- Red-Black Tree
-- Sorted by key
-- No hashing, no buckets, no collisions
 
---------------------------------------------------------------------
-4. TIME COMPLEXITY TABLE (AVERAGE CASE)
---------------------------------------------------------------------
+Red-Black Tree
 
-Legend:
-add      -> insert element
-remove   -> delete element
-contains -> search element / key
+Sorted by key
 
-------------------------------------------------------------
-DATA STRUCTURE        | add      | remove   | contains
-------------------------------------------------------------
-ArrayList             | O(1)*    | O(n)     | O(n)
-LinkedList            | O(1)**   | O(1)**   | O(n)
-------------------------------------------------------------
-HashSet               | O(1)     | O(1)     | O(1)
-TreeSet               | O(log n) | O(log n) | O(log n)
-------------------------------------------------------------
-HashMap               | O(1)     | O(1)     | O(1)
-Hashtable              | O(1)     | O(1)     | O(1)
-TreeMap               | O(log n) | O(log n) | O(log n)
-------------------------------------------------------------
-Stack                  | O(1)     | O(1)     | O(n)
-Queue (LinkedList)     | O(1)     | O(1)     | O(n)
-ArrayBlockingQueue     | O(1)     | O(1)     | O(n)
-Deque (ArrayDeque)     | O(1)     | O(1)     | O(n)
-------------------------------------------------------------
+No hashing, no buckets, no collisions
 
-* ArrayList add is O(1) amortized (resizing costs O(n))
-** LinkedList add/remove is O(1) only when position is known
+4. Time Complexity Comparison (Average Case)
+Legend
 
-Worst Case Notes:
-- Hash-based structures degrade to O(n) if hash collisions are extreme
-- Tree-based structures remain O(log n) due to balancing
+add → insert element
 
---------------------------------------------------------------------
-5. KEY DIFFERENCES – HashMap vs Hashtable vs TreeMap
---------------------------------------------------------------------
+remove → delete element
 
-HashMap
-- Not synchronized
-- Allows one null key
-- Faster
-- Uses hashing + buckets
+contains → search element / key
 
-Hashtable
-- Synchronized
-- No null key/value
-- Legacy
-- Thread-safe but slower
+Data Structure	add	remove	contains
+ArrayList	O(1)*	O(n)	O(n)
+LinkedList	O(1)**	O(1)**	O(n)
+HashSet	O(1)	O(1)	O(1)
+TreeSet	O(log n)	O(log n)	O(log n)
+HashMap	O(1)	O(1)	O(1)
+Hashtable	O(1)	O(1)	O(1)
+TreeMap	O(log n)	O(log n)	O(log n)
+Stack	O(1)	O(1)	O(n)
+Queue (LinkedList)	O(1)	O(1)	O(n)
+ArrayBlockingQueue	O(1)	O(1)	O(n)
+Deque (ArrayDeque)	O(1)	O(1)	O(n)
 
-TreeMap
-- Sorted Map
-- No hashing
-- Uses Red-Black Tree
-- No null key
-- Guaranteed O(log n)
+* Amortized time (resizing may cost O(n))
+** Only when position/node is known
 
---------------------------------------------------------------------
-6. CONCURRENT COLLECTIONS (MENTIONED IN PROJECT)
---------------------------------------------------------------------
+Worst case for hash-based structures can degrade to O(n) due to collisions.
+Tree-based structures guarantee O(log n).
 
-Examples typically covered:
-- ConcurrentHashMap
-- CopyOnWriteArrayList
-- CopyOnWriteArraySet
-- BlockingQueue variants
+5. HashMap vs Hashtable vs TreeMap
+Feature	HashMap	Hashtable	TreeMap
+Ordering	No	No	Sorted
+Thread-safe	No	Yes	No
+Null key	One	No	No
+Internal DS	Hash table	Hash table	Red-Black Tree
+Performance	Fast	Slower	Moderate
+6. Concurrent Collections (Covered in Project)
+
+Examples:
+
+ConcurrentHashMap
+
+CopyOnWriteArrayList
+
+CopyOnWriteArraySet
+
+BlockingQueue variants
 
 Purpose:
-- Thread safety without full synchronization
-- Better scalability than Hashtable or synchronized blocks
 
---------------------------------------------------------------------
-7. WHY THIS STRUCTURE IS USEFUL
---------------------------------------------------------------------
+Thread safety without global synchronization
 
-This project helps you:
-- Understand when to use which collection
-- Visualize internal Java collection hierarchy
-- Compare performance trade-offs
-- Prepare for Java & DSA interviews
-- Relate theory to real code execution
+Better scalability than Hashtable
 
---------------------------------------------------------------------
-END OF README
---------------------------------------------------------------------
+7. Why This Project Is Useful
+
+Understand when to use which collection
+
+Visualize Java collection hierarchy
+
+Learn performance trade-offs
+
+Prepare for Java & DSA interviews
+
+Connect theory with real code
+
+8. Notes
+
+Prefer Deque over Stack
+
+Prefer ConcurrentHashMap over Hashtable
+
+Use TreeMap/TreeSet when ordering is required
